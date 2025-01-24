@@ -1,11 +1,31 @@
-public void setup(){
-  String[] lines = {"beast","dough","happy","question","star","three","eagle","try"};
-  System.out.println("there are " + lines.length + " lines");
-  for (int i = 0 ; i < lines.length; i++) 
-  {
-    System.out.println(pigLatin(lines[i]));
+import java.io.File;  // Import the File class
+import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.util.Scanner; // Import the Scanner class to read text files
+
+public class PigLatin {
+    public void tester() {
+        // String[] lines = loadStrings("words.txt");
+        String[] lines = new String[8];
+        try{
+            File myFile = new File("words.txt");
+            Scanner myReader = new Scanner(myFile);
+            int counter = 0;
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                lines[counter] = data;
+                counter++;
+            }
+            myReader.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+   System.out.println("there are " + lines.length + " lines");
+   for (int i = 0 ; i < lines.length; i++) {
+       System.out.println(pigLatin(lines[i]));
+   }
   }
-}
 
 public int findFirstVowel(String sWord){
 //precondition: sWord is a valid String of length greater than 0.
@@ -18,7 +38,7 @@ public int findFirstVowel(String sWord){
   return -1;
 }
 
-public string piglatin(String sWord){
+public String pigLatin(String sWord){
   int index = findFirstVowel(sWord);
 //precondition: sWord is a valid String of length greater than 0
 //postcondition: returns the pig latin equivalent of sWord
@@ -32,5 +52,6 @@ public string piglatin(String sWord){
     return sWord.substring(2) + "quay";
     }else{
       return sWord.substring(index) + sWord.substring(0, index) + "ay";
+    }
   }
 }
