@@ -1,5 +1,4 @@
-public void setup() 
-{
+public void setup(){
   String[] lines = {"beast","dough","happy","question","star","three","eagle","try"};
   System.out.println("there are " + lines.length + " lines");
   for (int i = 0 ; i < lines.length; i++) 
@@ -19,7 +18,7 @@ public int findFirstVowel(String sWord){
   return -1;
 }
 
-public String pigLatin(String sWord){
+public string piglatin(String sWord){
   int index = findFirstVowel(sWord);
 //precondition: sWord is a valid String of length greater than 0
 //postcondition: returns the pig latin equivalent of sWord
